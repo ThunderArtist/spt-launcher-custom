@@ -233,7 +233,7 @@
   "setting_section_game": "Oyun",
   "setting_section_linux": "Linux",
   "setting_section_troubleshooting": "Sorun Giderme",
-  "setting_help_prefix": "Path must be set to an existing Wine prefix directory",
+  "setting_help_prefix": "Choose an empty folder or an existing Wine Prefix",
   "setting_help_umu": "Path must be set to an existing umu-run executable",
   "setting_help_proton": "No Proton found - Add a new search directory or install Proton with ProtonPlus or ProtonUp-Qt",
   "linux_add_confirm": "Confirm?",

@@ -404,7 +404,14 @@ public class ConfigHelper
 
     public bool IsPrefixPathValid(string path)
     {
-        return !string.IsNullOrEmpty(path) && Directory.Exists(path) && File.Exists(Path.Combine(path, "system.reg"));
+        if (string.IsNullOrEmpty(path) || !Directory.Exists(path))
+            return false;
+
+        if (File.Exists(Path.Combine(path, "system.reg")))
+            return true;
+        
+        return !Directory.EnumerateFiles(path).GetEnumerator().MoveNext()        // No files in directory
+            && !Directory.EnumerateDirectories(path).GetEnumerator().MoveNext(); // No subdirectories in directory
     }
 
     public bool IsUmuPathValid(string path)
