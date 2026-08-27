@@ -22,7 +22,7 @@
                 <div class="d-flex align-center gap-1 card-actions" @onclick:stopPropagation="true">
                     <MudTooltip Color="Color.Dark" Arrow="false" Inline="false" Placement="Placement.Top" ShowOnHover="true"
                                 ShowOnFocus="false" ShowOnClick="false" Text="@(LocaleHelper.Get("profile_copy_id"))">
-                        <MudIconButton Disabled="!IsWindows" Icon="@Icons.Material.Filled.FileCopy" Color="Color.Inherit" Size="Size.Small"
+                        <MudIconButton Disabled="false" Icon="@Icons.Material.Filled.FileCopy" Color="Color.Inherit" Size="Size.Small"
                                        OnClick="CopyProfileId"/>
                     </MudTooltip>
                     @if (!HideDeleteButton)
@@ -75,8 +75,6 @@
     [Parameter] public List<MiniProfile> ProfileList { get; set; } = [];
 
     [Parameter] public EventCallback<List<MiniProfile>> ProfileListChanged { get; set; }
-
-    private bool IsWindows => OperatingSystem.IsWindows();
 
     private bool CardIsClickable => !HideDeleteButton && !MiniProfile.InvalidOrUnloadableProfile;
 
@@ -178,20 +176,31 @@
 
     private void CopyProfileId()
     {
-        if (!IsWindows)
+        if (OperatingSystem.IsLinux())
         {
+            if (LinuxClipboard.CopyText(MiniProfile.ProfileId))
+                Snackbar.Add(LocaleHelper.Get("profile_copy_id_success"), Severity.Success);
+            else
+                Snackbar.Add(LocaleHelper.Get("profile_copy_id_error"), Severity.Error);
+            
             return;
         }
 
-        if (WindowsClipboard.CopyText(MiniProfile.ProfileId))
+        if (OperatingSystem.IsWindows())
         {
-            Logger.LogDebug("Copied profile id to clipboard: {id}", MiniProfile.ProfileId);
-            Snackbar.Add(LocaleHelper.Get("profile_copy_id_success"), Severity.Success);
-        }
-        else
-        {
-            Snackbar.Add(LocaleHelper.Get("profile_copy_id_error"), Severity.Error);
-        }
-    }
+            if (WindowsClipboard.CopyText(MiniProfile.ProfileId))
+            {
+                Logger.LogDebug("Copied profile id to clipboard: {id}", MiniProfile.ProfileId);
+                Snackbar.Add(LocaleHelper.Get("profile_copy_id_success"), Severity.Success);
+            }
+            else
+            {
+                Snackbar.Add(LocaleHelper.Get("profile_copy_id_error"), Severity.Error);
+            }
 
+            return;
+        }
+
+        Snackbar.Add(LocaleHelper.Get("profile_copy_id_error"), Severity.Error);
+    }   
 }
