@@ -55,6 +55,12 @@
             </MudPaper>
         </MudContainer>
     }
+    @if (OperatingSystem.IsLinux())
+    {
+        <MudContainer Class="pa-0 mb-4 d-flex flex-row gap-4 justify-center">
+            <ProfileLaunchArgumentsComponent/>
+        </MudContainer>
+    }
 </MudContainer>
 
 @code {

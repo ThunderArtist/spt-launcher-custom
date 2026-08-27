@@ -1,0 +1,24 @@
+@inject LocaleHelper LocaleHelper
+@inject GameHelper GameHelper
+@inject ISnackbar Snackbar
+
+<MudItem sm="12">
+    <MudPaper Elevation="2" Class="pa-4 d-flex flex-column flex-none gap-2 mud-background-gray border-2 border-solid mud-border-lines-default card-container info-card-height">
+        <MudButton Class="mud-button-border-copy border-2 border-solid mud-button-inner-text-copy" Disabled="false" Variant="Variant.Filled" Color="Color.Dark" OnClick="CopyLaunchArguments" Size="Size.Medium" IconColor="Color.Error">@(LocaleHelper.Get("profile_copy_launch_arguments"))</MudButton>
+        <MudText Typo="Typo.body2">@(LocaleHelper.Get("profile_copy_launch_arguments_tip1"))</MudText>
+        <MudText Typo="Typo.body2">@(LocaleHelper.Get("profile_copy_launch_arguments_tip2"))</MudText>
+    </MudPaper>
+</MudItem>
+
+@code {
+    private void CopyLaunchArguments()
+    {
+        var argsList = GameHelper.GetLaunchArgs();
+        var argsString = string.Join(" ", argsList);
+
+        if (LinuxClipboard.CopyText(argsString))
+            Snackbar.Add(LocaleHelper.Get("profile_copy_launch_arguments_success"), Severity.Success);
+        else
+            Snackbar.Add(LocaleHelper.Get("profile_copy_launch_arguments_error"), Severity.Error);
+    }
+}

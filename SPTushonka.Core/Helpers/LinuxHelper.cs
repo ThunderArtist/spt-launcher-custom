@@ -78,7 +78,13 @@ public class LinuxHelper(ILogger<LinuxHelper> logger, ConfigHelper configHelper)
         {
             foreach (var arg in args)
             {
-                process.ArgumentList.Add(arg);
+                // Double-quote is a special terminal symbol that
+                // doesn't end up in the application's arguments.
+                // However, C#'s ArgumentList escapes double quotes,
+                // and they DO end up in the application's arguments.
+                // Spt-Pre-Patcher will break if the JSON string
+                // starts and ends with double quotes.
+                process.ArgumentList.Add(arg.Replace("\"", ""));
             }
         }
 

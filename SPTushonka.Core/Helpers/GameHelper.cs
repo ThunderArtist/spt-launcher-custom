@@ -131,6 +131,7 @@ public class GameHelper
     private bool LaunchGameWindows(string clientExecutable)
     {
         // Start game
+        // TODO try List<string> argsList = GetLaunchArgs() as on Linux and check if it works on Windows
         var args =
             $"-force-gfx-jobs native -token={_stateHelper.SelectedProfile?.ProfileId} -config="
             + $"{{'BackendUrl':'https://{_stateHelper.SelectedServer?.IpAddress}','Version':'live','MatchingVersion':'live'}}";
@@ -159,15 +160,19 @@ public class GameHelper
         return true;
     }
 
-    private bool LaunchGameLinux(string clientExecutable)
+    public List<string> GetLaunchArgs()
     {
-        List<string> argsList =
-        [
+        return [
             "-force-gfx-jobs",
             "native",
             $"-token={_stateHelper.SelectedProfile?.ProfileId}",
-            $"-config={{'BackendUrl':'https://{_stateHelper.SelectedServer?.IpAddress}','Version':'live','MatchingVersion':'live'}}",
+            $"-config=\"{{'BackendUrl':'https://{_stateHelper.SelectedServer?.IpAddress}','Version':'live','MatchingVersion':'live'}}\"",
         ];
+    }
+
+    private bool LaunchGameLinux(string clientExecutable)
+    {
+        List<string> argsList = GetLaunchArgs();
 
         _logger.LogInformation("args: {Args}", string.Join(" ", argsList));
 
