@@ -176,31 +176,26 @@
 
     private void CopyProfileId()
     {
-        if (OperatingSystem.IsLinux())
-        {
-            if (LinuxClipboard.CopyText(MiniProfile.ProfileId))
-                Snackbar.Add(LocaleHelper.Get("profile_copy_id_success"), Severity.Success);
-            else
-                Snackbar.Add(LocaleHelper.Get("profile_copy_id_error"), Severity.Error);
-            
-            return;
-        }
+        try {
 
-        if (OperatingSystem.IsWindows())
-        {
-            if (WindowsClipboard.CopyText(MiniProfile.ProfileId))
+            if (OperatingSystem.IsLinux() && LinuxClipboard.CopyText(MiniProfile.ProfileId))
             {
-                Logger.LogDebug("Copied profile id to clipboard: {id}", MiniProfile.ProfileId);
                 Snackbar.Add(LocaleHelper.Get("profile_copy_id_success"), Severity.Success);
-            }
-            else
-            {
-                Snackbar.Add(LocaleHelper.Get("profile_copy_id_error"), Severity.Error);
+                return;
             }
 
-            return;
-        }
+            if (OperatingSystem.IsWindows() && WindowsClipboard.CopyText(MiniProfile.ProfileId))
+            {
+                Snackbar.Add(LocaleHelper.Get("profile_copy_id_success"), Severity.Success);
+                return;
+            }
 
-        Snackbar.Add(LocaleHelper.Get("profile_copy_id_error"), Severity.Error);
+            Snackbar.Add(LocaleHelper.Get("profile_copy_id_error"), Severity.Error);
+        }
+        catch (Exception e)
+        {
+            Logger.LogError(e.ToString());
+            throw;
+        }
     }   
 }
