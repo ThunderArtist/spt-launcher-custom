@@ -4,7 +4,7 @@
 @inject NavigationManager NavigationManager
 @inject ILogger<ProfileCardComponent> Logger
 @inject LocaleHelper LocaleHelper
-@inject WindowsClipboard WindowsClipboard
+@inject IClipboard Clipboard
 @inject ISnackbar Snackbar
 
 <MudItem sm="4">
@@ -178,13 +178,7 @@
     {
         try {
 
-            if (OperatingSystem.IsLinux() && LinuxClipboard.CopyText(MiniProfile.ProfileId))
-            {
-                Snackbar.Add(LocaleHelper.Get("profile_copy_id_success"), Severity.Success);
-                return;
-            }
-
-            if (OperatingSystem.IsWindows() && WindowsClipboard.CopyText(MiniProfile.ProfileId))
+            if (Clipboard.CopyText(MiniProfile.ProfileId))
             {
                 Snackbar.Add(LocaleHelper.Get("profile_copy_id_success"), Severity.Success);
                 return;

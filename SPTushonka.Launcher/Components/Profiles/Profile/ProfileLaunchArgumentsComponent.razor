@@ -1,5 +1,6 @@
 @inject LocaleHelper LocaleHelper
 @inject GameHelper GameHelper
+@inject IClipboard Clipboard
 @inject ISnackbar Snackbar
 
 <MudItem sm="12">
@@ -16,7 +17,7 @@
         var argsList = GameHelper.GetLaunchArgs();
         var argsString = string.Join(" ", argsList);
 
-        if (LinuxClipboard.CopyText(argsString))
+        if (Clipboard.CopyText(argsString))
             Snackbar.Add(LocaleHelper.Get("profile_copy_launch_arguments_success"), Severity.Success);
         else
             Snackbar.Add(LocaleHelper.Get("profile_copy_launch_arguments_error"), Severity.Error);
