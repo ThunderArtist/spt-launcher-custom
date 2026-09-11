@@ -36,6 +36,11 @@ public static class LinuxClipboard
     {
         // TODO: Add wayland support with wl-copy, the alternative of xclip for wayland
         throw new NotImplementedException("Wayland clipboard is not supported yet. Make a pull request :)");
+
+        // Sample implementation, HAS NOT BEEN TESTED
+        // value = value.Replace("\\", "\\\\").Replace("\"", "\\\"");      // Escapes on top of escapes
+        // var process = ExecuteCommand($"printf %b \"{value}\" | wl-copy --primary");
+        // return process.ExitCode == 0;
     }
 
     private static Process ExecuteCommand(string command)
