@@ -233,7 +233,7 @@
   "setting_section_game": "Игра",
   "setting_section_linux": "Linux",
   "setting_section_troubleshooting": "Диагностика",
-  "setting_help_prefix": "Путь должен быть установлен в существующую папку префиксов Wine",
+  "setting_help_prefix": "Путь должен быть установлен в празную папку или существующий префиксов Wine",
   "setting_help_umu": "Путь должен быть установлен к существующему исполняемому файлу umu-run",
   "setting_help_proton": "Proton не найден - Укажите папку для поиска или установите Proton с ProtonPlus или ProtonUp-Qt",
   "linux_add_confirm": "Подтвердить?",

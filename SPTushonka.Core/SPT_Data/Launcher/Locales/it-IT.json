@@ -208,28 +208,6 @@
   "profile_clear": "Pulizia cache del gioco",
   "linux_proton_version": "Versione Proton ",
   "linux_wine_prefix": "Wine Prefix",
-<<<<<<< HEAD:SPTushonka.Core/SPT_Data/Launcher/Locales/Italian.json
-  "linux_launch_settings": "Launch Settings",
-  "profile_copy_id": "Copy Profile ID",
-  "profile_copy_id_success": "Copied profile ID to clipboard",
-  "profile_copy_id_error": "Unable to copy profile ID to clipboard",
-  "profile_copy_launch_arguments": "Copy Launch Arguments",
-  "profile_copy_launch_arguments_success": "Copied launch arguments to clipboard",
-  "profile_copy_launch_arguments_error": "Unable to copy launch arguments to clipboard",
-  "profile_copy_launch_arguments_tip1": "Use the arguments to launch the game with a different launcher (Lutris/Heroic/Steam).",
-  "profile_copy_launch_arguments_tip2": "The game also needs WINEDLLOVERRIDES=\"winhttp=n,b\"",
-  "info_spt_desc": "Your community-driven resource for everything related to SPT. Whether you’re new to SPT or a seasoned modder, this wiki aims to be your central hub for information.",
-  "server_edit_required_name": "Name is required!",
-  "setting_set_game_path": "Set Game Path",
-  "setting_game_path": "Game Path",
-  "linux_add_warning": "Please confirm these are correct! they can be changed in the settings menu later",
-  "linux_add_prefix": "Prefix Path",
-  "linux_add_prefix_required": "Prefix path is required",
-  "linux_add_umu": "Umu Path",
-  "linux_add_umu_required": "Umu path is required",
-  "linux_add_launch_settings": "Launch arguments",
-  "linux_add_proton": "Proton Version",
-=======
   "linux_launch_settings": "Impostazioni Di Avvio",
   "profile_copy_id": "Copia ID Profilo",
   "profile_copy_id_success": "ID profilo copiato negli appunti",
@@ -245,7 +223,6 @@
   "linux_add_umu_required": "Il percorso Umu è obbligatorio",
   "linux_add_launch_settings": "Argomenti di avvio",
   "linux_add_proton": "versione Proton",
->>>>>>> cb6d4470c5bc130e567c3bde276c6b2477242c31:SPTushonka.Core/SPT_Data/Launcher/Locales/it-IT.json
   "linux_add_proton_path": "Aggiungi directory di ricerca Proton",
   "linux_add_proton_required": "La versione Proton è obbligatoria",
   "linux_add_proton_placeholder": "Versione Proton da utilizzare",
@@ -256,18 +233,6 @@
   "setting_section_game": "Gioco",
   "setting_section_linux": "Linux",
   "setting_section_troubleshooting": "Risoluzione dei problemi",
-<<<<<<< HEAD:SPTushonka.Core/SPT_Data/Launcher/Locales/Italian.json
-  "setting_help_prefix": "Choose an empty folder or an existing Wine Prefix",
-  "setting_help_umu": "Path must be set to an existing umu-run executable",
-  "setting_help_proton": "No Proton found - Add a new search directory or install Proton with ProtonPlus or ProtonUp-Qt",
-  "linux_add_confirm": "Confirm?",
-  "game_helper_error_7": "Connection was Refused/Lost to Server",
-  "game_helper_error_8": "Unknown error occured, please report to SPT",
-  "profile_page_task_4": "Acquiring Bundles",
-  "profile_page_task_4_fail": "Failed to acquire bundles",
-  "game_helper_error_9": "Bundle acquisition failed"
-=======
-  "setting_help_prefix": "Il percorso deve essere impostato su una directory Wine prefix esistente",
   "setting_help_umu": "Il percorso deve essere impostato a un eseguibile umu-run esistente",
   "setting_help_proton": "Nessun Proton trovato: aggiungi una nuova directory di ricerca o installa Proton con ProtonPlus o ProtonUp-Qt",
   "linux_add_confirm": "Confermare?",
@@ -276,5 +241,4 @@
   "profile_page_task_4": "Acquisizione Pacchetti",
   "profile_page_task_4_fail": "Impossibile acquisire pacchetti",
   "game_helper_error_9": "Acquisizione pacchetto fallita"
->>>>>>> cb6d4470c5bc130e567c3bde276c6b2477242c31:SPTushonka.Core/SPT_Data/Launcher/Locales/it-IT.json
 }

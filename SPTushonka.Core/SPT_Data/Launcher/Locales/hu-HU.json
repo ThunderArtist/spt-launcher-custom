@@ -233,7 +233,6 @@
   "setting_section_game": "Játék",
   "setting_section_linux": "Linux",
   "setting_section_troubleshooting": "Hibaelhárítás",
-  "setting_help_prefix": "Az elérési utat egy meglévő Wine prefix könyvtárra kell állítani",
   "setting_help_umu": "Az elérési utat egy meglévő umu-run futtatható fájlra kell állítani",
   "setting_help_proton": "Nem található Proton - Adjon hozzá új keresési könyvtárat, vagy telepítse a Protont, ProtonPlus-al vagy ProtonUp-Qt-val",
   "linux_add_confirm": "Megerősítés?",

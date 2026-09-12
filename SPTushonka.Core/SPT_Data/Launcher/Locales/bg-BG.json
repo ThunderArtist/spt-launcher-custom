@@ -217,12 +217,9 @@
   "setting_section_interface": "Интерфейс",
   "setting_section_game": "Игра",
   "setting_section_troubleshooting": "Отстраняване на Неизправности",
-<<<<<<< HEAD:SPTushonka.Core/SPT_Data/Launcher/Locales/Bulgarian.json
   "setting_help_prefix": "Изберете празна папка или съществуващ Wine Prefix",
   "setting_help_umu": "Пътят трябва да води до umu-run програма",
   "setting_help_proton": "Няма намерени Proton-и - Добавете папка за търсене или инсталирайте Proton с ProtonPlus или ProtonUp-Qt",
-=======
->>>>>>> cb6d4470c5bc130e567c3bde276c6b2477242c31:SPTushonka.Core/SPT_Data/Launcher/Locales/bg-BG.json
   "linux_add_confirm": "Потвърди",
   "game_helper_error_7": "Връзката към сървъра беше отказана/загубена",
   "game_helper_error_8": "Случи се непозната грешка, моля докладвайте до SPT",
