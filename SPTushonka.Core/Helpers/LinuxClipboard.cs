@@ -12,39 +12,23 @@ public class LinuxClipboard : IClipboard
     
     public bool CopyText(string value)
     {
-        var sessionType = GetSessionType();
+        var sessionType = Environment.GetEnvironmentVariable("XDG_SESSION_TYPE");   // Check whether the user is using X11 or Wayland
+        var command = string.Empty;
+
+        if (sessionType is not ("x11" or "wayland"))
+        {
+            throw new Exception($"Your window manager \"{sessionType}\" is not supported.");
+        }
+
+        value = value.Replace("\\", "\\\\").Replace("\"", "\\\"");      // Escapes on top of escapes
 
         if (sessionType == "x11")
-            return CopyTextX11(value);
-        
+            command = $"printf %b \"{value}\" | xclip -selection clipboard";
+
         if (sessionType == "wayland")
-            return CopyTextWayland(value);
+            command = $"wl-copy \"{value}\"";
 
-        throw new Exception($"Your window manager \"{sessionType}\" is not supported.");
-    }
-
-    // Check whether the user is using X11 or Wayland
-    private static string GetSessionType()
-    {
-        var process = LinuxHelper.ExecuteCommand("echo $XDG_SESSION_TYPE");
-        return process.StandardOutput.ReadToEnd().Trim();
-    }
-
-    private bool CopyTextX11(string value)
-    {
-        value = value.Replace("\\", "\\\\").Replace("\"", "\\\"");      // Escapes on top of escapes
-        var process = LinuxHelper.ExecuteCommand($"printf %b \"{value}\" | xclip -selection clipboard");
+        var process = LinuxHelper.ExecuteCommand(command);
         return process.ExitCode == 0;
-    }
-
-    private bool CopyTextWayland(string value)
-    {
-        // TODO: Add wayland support with wl-copy, the alternative of xclip for wayland
-        throw new NotImplementedException("Wayland clipboard is not supported yet. Make a pull request :)");
-
-        // Sample implementation, HAS NOT BEEN TESTED
-        // value = value.Replace("\\", "\\\\").Replace("\"", "\\\"");      // Escapes on top of escapes
-        // var process = LinuxHelper.ExecuteCommand($"printf %b \"{value}\" | wl-copy --primary");
-        // return process.ExitCode == 0;
     }
 }
